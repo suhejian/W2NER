@@ -3,14 +3,14 @@ import pickle
 import time
 
 
-def get_logger(dataset):
-    pathname = "./log/{}_{}.txt".format(dataset, time.strftime("%m-%d_%H-%M-%S"))
+def get_logger(log_path):
+    
     logger = logging.getLogger()
     logger.setLevel(logging.INFO)
     formatter = logging.Formatter("%(asctime)s - %(levelname)s: %(message)s",
                                   datefmt='%Y-%m-%d %H:%M:%S')
 
-    file_handler = logging.FileHandler(pathname)
+    file_handler = logging.FileHandler(log_path)
     file_handler.setLevel(logging.DEBUG)
     file_handler.setFormatter(formatter)
 

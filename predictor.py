@@ -19,6 +19,8 @@ if __name__ == '__main__':
     parser.add_argument('--predict_path', type=str, default='./output.json')
     parser.add_argument('--device', type=int, default=0)
 
+    parser.add_argument('--log_path', type=str)
+
     parser.add_argument('--dist_emb_size', type=int)
     parser.add_argument('--type_emb_size', type=int)
     parser.add_argument('--lstm_hid_size', type=int)
@@ -51,6 +53,14 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     config = config.Config(args)
+    logger = utils.get_logger(config.log_path)
+    logger.info(config)
+    config.logger = logger
+
+    if torch.cuda.is_available():
+        torch.cuda.set_device(args.device)
+
+    logger.info("Loading Data")
     datasets, ori_data = data_loader.load_data_bert(config)
     
     train_loader, dev_loader, test_loader = (
@@ -64,6 +74,7 @@ if __name__ == '__main__':
     
     with open("./data/{}/test.json".format(config.dataset), "r", encoding="utf-8") as f:
         test_data = json.load(f)
+
     
     model = Model(config)
     model.load_state_dict(torch.load(config.save_path))

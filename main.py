@@ -222,6 +222,8 @@ if __name__ == '__main__':
     parser.add_argument('--save_path', type=str, default='./model.pt')
     parser.add_argument('--predict_path', type=str, default='./output.json')
     parser.add_argument('--device', type=int, default=0)
+    
+    parser.add_argument('--log_path', type=str)
 
     parser.add_argument('--dist_emb_size', type=int)
     parser.add_argument('--type_emb_size', type=int)
@@ -256,7 +258,7 @@ if __name__ == '__main__':
 
     config = config.Config(args)
 
-    logger = utils.get_logger(config.dataset)
+    logger = utils.get_logger(config.log_path)
     logger.info(config)
     config.logger = logger
 

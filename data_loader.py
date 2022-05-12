@@ -195,8 +195,8 @@ def load_data_bert(config):
     table.add_row(['train', len(train_data), train_ent_num])
     table.add_row(['dev', len(dev_data), dev_ent_num])
     table.add_row(['test', len(test_data), test_ent_num])
-    # config.logger.info("\n{}".format(table))
-    print(table)
+    config.logger.info("\n{}".format(table))
+    # print(table)
 
     config.label_num = len(vocab.label2id)
     config.vocab = vocab
