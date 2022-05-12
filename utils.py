@@ -112,9 +112,9 @@ def cal_f1(c, p, r):
 
 
 
-def get_predictions(outputs, entities, length):
+def get_predictions(outputs, length):
     predictions = []
-    for index, (instance, ent_set, l) in enumerate(zip(outputs, entities, length)):
+    for index, (instance, l) in enumerate(zip(outputs, length)):
         forward_dict = {}
         head_dict = {}
         ht_type_dict = {}
@@ -158,3 +158,20 @@ def get_predictions(outputs, entities, length):
         predictions.append(predicts)
     
     return predictions
+
+
+def get_entities(sentence, entity_text, id2label):
+    """
+    根据entity_text和原文得到真正的实体
+    """
+    entities = []
+    for entity in entity_text:
+        ids = entity.split("-")
+        tag_index = int(ids[-1])
+        
+        ids = ids[: -2]
+        entity_ids = [int(x) for x in ids]
+        
+        entity = [sentence[idx] for idx in entity_ids]
+        entities.append((" ".join(entity), id2label[tag_index]))
+    return entities
