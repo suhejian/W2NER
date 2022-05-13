@@ -57,7 +57,7 @@ We provide some datasets processed in this [link](https://drive.google.com/drive
 
 ```bash
 >> mkdir logs
->> CUDA_VISIBLE_DEVICES="0" python main.py --config ./config/example.json --log ./logs/example.log
+>> python main.py --config ./config/example.json --save_path model.pt --log_path ./logs/example.log
 ```
 
 ## 6. Predict
