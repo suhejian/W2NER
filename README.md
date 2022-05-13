@@ -56,9 +56,17 @@ We provide some datasets processed in this [link](https://drive.google.com/drive
 ## 5. Training
 
 ```bash
->> python main.py --config ./config/example.json
+>> mkdir logs
+>> CUDA_VISIBLE_DEVICES="0" python main.py --config ./config/example.json --log ./logs/example.log
 ```
-## 6. License
+
+## 6. Predict
+
+```bash
+>> python predictor.py --config ./config/example.json --save_path ./model.pt --predict_path ./test.txt --log_path ./predict.log
+```
+
+## 7. License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
