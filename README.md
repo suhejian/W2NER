@@ -62,8 +62,9 @@ We provide some datasets processed in this [link](https://drive.google.com/drive
 ## 6. Predict
 
 ```bash
->> python predictor.py --config ./config/conll03.json --save_path ./model.pt --predict_path ./test.txt --log_path ./predict.log
+>> python predictor.py --config ./config/conll03.json --save_path ./conll_model.pt --predict_path ./test.txt --log_path ./predict.log
 ```
+生成的test.txt文件就是带概率的预测结果
 
 ## 7. License
 
