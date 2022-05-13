@@ -56,14 +56,13 @@ We provide some datasets processed in this [link](https://drive.google.com/drive
 ## 5. Training
 
 ```bash
->> mkdir logs
->> python main.py --config ./config/example.json --save_path model.pt --log_path ./logs/example.log
+>> python main.py --config ./config/conll03.json --save_path ./conll_model.pt --log_path ./conll03.log
 ```
 
 ## 6. Predict
 
 ```bash
->> python predictor.py --config ./config/example.json --save_path ./model.pt --predict_path ./test.txt --log_path ./predict.log
+>> python predictor.py --config ./config/conll03.json --save_path ./model.pt --predict_path ./test.txt --log_path ./predict.log
 ```
 
 ## 7. License
